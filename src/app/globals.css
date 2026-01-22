@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
+/*
+ * Promise Buddy - Global Styles
+ *
+ * Color Philosophy:
+ * - Soft pastel palette inspired by the cozy illustration style
+ * - Warm creams, soft pinks, dusty blues, and gentle greens
+ * - Creates a calm, nurturing feeling
+ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Warm pastel neutrals */
+  --color-cream: #FDF9F5;
+  --color-warm-white: #FFFCF9;
+  --color-blush: #F5EBE6;
+  --color-stone: #E8DED6;
+  --color-sand: #DDD3C8;
+
+  /* Text colors - warm and soft */
+  --color-text-primary: #4A4039;
+  --color-text-secondary: #7A6E63;
+  --color-text-muted: #A99E93;
+
+  /* Pastel accents - inspired by the illustrations */
+  --color-sage: #A8C4A2;
+  --color-sage-light: #C5D9C1;
+  --color-sage-dark: #8BAD84;
+
+  --color-peach: #E8C4B8;
+  --color-peach-light: #F2D9D0;
+  --color-peach-dark: #D4A999;
+
+  --color-sky: #B8CDD8;
+  --color-sky-light: #D0DEE6;
+  --color-sky-dark: #9BB8C7;
+
+  --color-lavender: #D4C5D9;
+  --color-lavender-light: #E6DCE9;
+  --color-lavender-dark: #BBA8C2;
+
+  /* Semantic */
+  --background: var(--color-cream);
+  --foreground: var(--color-text-primary);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Custom colors for Tailwind */
+  --color-cream: #FDF9F5;
+  --color-warm-white: #FFFCF9;
+  --color-blush: #F5EBE6;
+  --color-stone: #E8DED6;
+  --color-sand: #DDD3C8;
+
+  --color-text-primary: #4A4039;
+  --color-text-secondary: #7A6E63;
+  --color-text-muted: #A99E93;
+
+  --color-sage: #A8C4A2;
+  --color-sage-light: #C5D9C1;
+  --color-sage-dark: #8BAD84;
+
+  --color-peach: #E8C4B8;
+  --color-peach-light: #F2D9D0;
+  --color-peach-dark: #D4A999;
+
+  --color-sky: #B8CDD8;
+  --color-sky-light: #D0DEE6;
+  --color-sky-dark: #9BB8C7;
+
+  --color-lavender: #D4C5D9;
+  --color-lavender-light: #E6DCE9;
+  --color-lavender-dark: #BBA8C2;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base styles */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus states - accessible but soft */
+:focus-visible {
+  outline: 2px solid var(--color-sage);
+  outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+  background: var(--color-peach-light);
+  color: var(--color-text-primary);
 }
