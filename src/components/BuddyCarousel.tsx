@@ -7,8 +7,8 @@ import Image from "next/image";
  * Buddy Carousel Component
  *
  * Wide carousel showing all 9 buddies at once.
- * The highlighted buddy rotates through the list.
- * Full width layout for maximum visibility.
+ * Smooth highlight transition without layout shifts.
+ * Uses opacity and subtle effects instead of size changes.
  */
 
 const buddies = [
@@ -51,8 +51,8 @@ export default function BuddyCarousel() {
           Meet your potential buddies
         </p>
 
-        {/* All buddies in a row */}
-        <div className="flex items-end justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+        {/* All buddies in a fixed-size grid - no layout shifts */}
+        <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-5 lg:gap-6">
           {buddies.map((buddy, idx) => {
             const isActive = idx === activeIndex;
 
@@ -60,34 +60,34 @@ export default function BuddyCarousel() {
               <button
                 key={buddy.name}
                 onClick={() => setActiveIndex(idx)}
-                className={`flex flex-col items-center transition-all duration-300 ease-out ${
-                  isActive ? "scale-110" : "scale-100 opacity-70 hover:opacity-100"
-                }`}
+                className="flex flex-col items-center"
               >
-                <div
-                  className={`rounded-2xl p-2 md:p-3 transition-all duration-300 ${
-                    isActive
-                      ? "bg-warm-white shadow-lg ring-2 ring-sage/30"
-                      : "hover:bg-warm-white/50"
-                  }`}
-                >
+                {/* Fixed size container to prevent layout shifts */}
+                <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 relative">
+                  <div
+                    className={`absolute inset-0 rounded-2xl transition-all duration-500 ease-out ${
+                      isActive
+                        ? "bg-warm-white shadow-md"
+                        : "bg-transparent"
+                    }`}
+                  />
                   <Image
                     src={buddy.src}
                     alt={buddy.name}
-                    width={80}
-                    height={80}
-                    className={`transition-all duration-300 ${
+                    width={96}
+                    height={96}
+                    className={`w-full h-full relative z-10 transition-all duration-500 ease-out ${
                       isActive
-                        ? "w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
-                        : "w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
+                        ? "opacity-100"
+                        : "opacity-50 hover:opacity-75"
                     }`}
                   />
                 </div>
                 <p
-                  className={`text-center mt-2 transition-all duration-300 ${
+                  className={`text-center mt-2 text-xs sm:text-sm transition-all duration-500 ease-out ${
                     isActive
-                      ? "text-sm md:text-base text-text-primary font-medium"
-                      : "text-xs md:text-sm text-text-muted"
+                      ? "text-text-primary font-medium"
+                      : "text-text-muted"
                   }`}
                 >
                   {buddy.name}
