@@ -44,62 +44,66 @@ export default function Home() {
 
 /* ================================
    HERO SECTION
+   Text on left, image on right (stacked on mobile)
    ================================ */
 function HeroSection() {
   return (
-    <section className="px-6 md:px-8 pt-8 pb-16 md:pt-12 md:pb-24">
-      <div className="max-w-4xl mx-auto">
-        {/* Main illustration */}
-        <div className="mb-10 flex justify-center">
-          <Image
-            src="/images_promise_buddy/main.png"
-            alt="A person sitting peacefully with their buddy companion"
-            width={400}
-            height={400}
-            className="w-full max-w-sm md:max-w-md rounded-3xl"
-            priority
-          />
-        </div>
+    <section className="px-6 md:px-8 pt-12 pb-16 md:pt-20 md:pb-28">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16">
+          {/* Text content - left side on desktop */}
+          <div className="flex-1 text-center md:text-left">
+            {/* App name */}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-text-primary mb-4">
+              Promise Buddy
+            </h1>
 
-        <div className="text-center">
-          {/* App name */}
-          <h1 className="text-3xl md:text-4xl font-semibold text-text-primary mb-4">
-            Promise Buddy
-          </h1>
+            {/* Tagline */}
+            <p className="text-xl md:text-2xl text-text-secondary mb-6">
+              An app to help you help yourself.
+            </p>
 
-          {/* Tagline */}
-          <p className="text-xl md:text-2xl text-text-secondary mb-6">
-            An app to help you help yourself.
-          </p>
+            {/* Subheading - explains the concept briefly */}
+            <p className="text-base md:text-lg text-text-secondary leading-relaxed max-w-lg mb-10">
+              Keep personal promises by caring for a virtual buddy. When you check
+              in honestly, your buddy thrives. When you struggle, they understand.
+            </p>
 
-          {/* Subheading - explains the concept briefly */}
-          <p className="text-base md:text-lg text-text-secondary leading-relaxed max-w-lg mx-auto mb-10">
-            Keep personal promises by caring for a virtual buddy. When you check
-            in honestly, your buddy thrives. When you struggle, they understand.
-          </p>
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-center md:items-start justify-center md:justify-start gap-4">
+              {/* Primary CTA - Download */}
+              <a
+                href="#"
+                className="inline-flex items-center justify-center px-6 py-3 bg-sage text-white rounded-full font-medium hover:bg-sage-dark transition-colors shadow-sm"
+                aria-label="Download Promise Buddy for iOS"
+              >
+                Download for iOS
+              </a>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            {/* Primary CTA - Download */}
-            <a
-              href="#"
-              className="inline-flex items-center justify-center px-6 py-3 bg-sage text-white rounded-full font-medium hover:bg-sage-dark transition-colors shadow-sm"
-              aria-label="Download Promise Buddy for iOS"
-            >
-              Download for iOS
-            </a>
+              {/* Secondary CTA - How it works */}
+              <Link
+                href="#how-it-works"
+                className="inline-flex items-center justify-center px-6 py-3 text-text-secondary hover:text-text-primary transition-colors"
+              >
+                How it works
+              </Link>
+            </div>
 
-            {/* Secondary CTA - How it works */}
-            <Link
-              href="#how-it-works"
-              className="inline-flex items-center justify-center px-6 py-3 text-text-secondary hover:text-text-primary transition-colors"
-            >
-              How it works
-            </Link>
+            {/* Note about being free */}
+            <p className="mt-6 text-sm text-text-muted">Free to download. No ads.</p>
           </div>
 
-          {/* Note about being free */}
-          <p className="mt-6 text-sm text-text-muted">Free to download. No ads.</p>
+          {/* Main illustration - right side on desktop */}
+          <div className="flex-1 flex justify-center md:justify-end">
+            <Image
+              src="/images_promise_buddy/main.png"
+              alt="A person sitting peacefully with their buddy companion"
+              width={450}
+              height={450}
+              className="w-full max-w-xs sm:max-w-sm md:max-w-md rounded-3xl"
+              priority
+            />
+          </div>
         </div>
       </div>
     </section>
